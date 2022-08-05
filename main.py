@@ -6,34 +6,38 @@ discord: Petr H. #4342
 """
 from task_template import TEXTS
 oddelovac = ('----------------------------------------')
-# users = {'bob': '123',
-#          'ann': 'pass123',
-#          'mike': 'password123',
-#          'liz': 'pass123',
-#          'renata': 'heslo'
-#          }
-#
-# username = input('Zadej přihlašovací jméno: ')
-# password = input('Zadej heslo: ')
-#
-# if users.get(username) == password:
-#     print(f'Ahoj {username.upper()} pojďme analyzovat text...')
-#
-# else:
-#     print(f'Neplatné uživatelské jméno nebo heslo.')
-#     quit()
+
+users = {'bob': '123',
+         'ann': 'pass123',
+         'mike': 'password123',
+         'liz': 'pass123',
+         'renata': 'heslo'
+         }
+
+username = input('Zadej přihlašovací jméno: ')
+password = input('Zadej heslo: ')
+print(oddelovac)
+
+if users.get(username) == password:
+    print(f'Ahoj {username.upper()}, pojďme analyzovat text...\n'
+          f'Na výběr máme ze tří textů.\n'
+          f'{oddelovac}')
+
+else:
+    print(f'Neplatné uživatelské jméno nebo heslo.')
+    quit()
 
 
 cislo_textu = input(f'Zvol od 1 do 3 číslo textu pro analýzu: ')
+print(oddelovac)
 
 if cislo_textu.isnumeric() and 1 <= int(cislo_textu) <= 3:
     vybrany_text = TEXTS[int(cislo_textu) - 1]
 
-
 else:
     print(f'Chybné zadání. Ukončuji program.')
-
-# print(f'Vybraný text: \n{vybrany_text} \n')
+    quit()
+print(oddelovac)
 
 # počet slov
 pocet_slov = len(vybrany_text.split())
@@ -66,7 +70,7 @@ for slovo in vybrany_text.split():
 # sumu všech čísel (ne cifer) v textu.
         list_cisel.append(int(slovo))
 
-print(f'Slova začínající Velkým písmenem {zacinajici_pismena}')
+print(f'Slova začínající Velkým písmenem: {zacinajici_pismena}')
 print(f'Slova psané VELKÝMI písmeny: {velka_pismena}')
 print(f'Slova psané malými písmeny: {mala_pismena}')
 print(f'Počet číslic: {pocet_cisel}')
@@ -91,19 +95,8 @@ for index in pocet_znaku:
 # print(cetnost)
 
 print(f'{oddelovac}\n'
-      f'LEN|  OCCURENCES |NR. \n'
+      f'LEN|    OCCURENCES    |NR. \n'
       f'{oddelovac}')
 
 for key, value in sorted(cetnost.items()):
-    print(f'{key:3}|{"*" * value:12} |{value}')
-
-
-
-# for key, value in cetnost:
-# print(key, value)
-
-
-
-
-
-
+    print(f'{key:3}|{"*" * value:17} |{value}')
